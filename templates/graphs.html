@@ -1,0 +1,247 @@
+{% extends 'layout.html' %}
+{% block content %}
+<html>
+<head>
+<style>
+#upload{
+ width:200px;
+}
+</style>
+<link rel='stylesheet' href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script type="text/javascript">
+//yeh javascript se box chart ka values display karne ka kosish kar rahe the....
+/*
+var chor = [];
+function getdata(data) {
+	try{
+	var datag={};
+	datag.y=[];
+	datag.y[1]=data[1];
+	datag.y[2]=data[2];
+	datag.y[3]=data[3];
+	datag.y[4]=data[4];
+    datag.y.shift();
+	chor.push({
+    x: new Date(data[0]),
+    y: datag.y
+});
+}catch(err){
+	alert(err);
+}
+}
+{% for data in datalist %}
+getdata(data);
+{% endfor %}
+*/
+
+
+//yeh wala(candelstr=ic chart) dynamic real time chart se he hoga
+/*
+var chor = new Array();
+function getdata(data) {
+	try{
+	var datag={};
+	datag.y=[];
+	datag.y.push(data[1]);
+	datag.y.push(data[2]);
+	datag.y.push(data[3]);
+	datag.y.push(data[4]);
+    datag.y.shift();
+	chor.push({
+    x: new Date(data[0]),
+    y: datag.y
+});
+}catch(err){
+	alert(err);
+}
+}
+
+try{
+
+{% for data in datalist %}
+
+var data = new Array(data);
+getdata(data);
+{% endfor %}
+
+}catch(err){
+alert(err);
+}*/
+
+var limit = 1000;    //increase number of dataPoints by increasing this
+    
+    var y = 0;
+    var data = []; var dataSeries = { type: "line" };
+    var dataPoints = [];
+    for (var i = 0; i < limit; i += 1) {
+        y += (Math.random() * 10 - 5);
+         dataPoints.push({
+          x: i - limit / 2,
+          y: y                
+           });
+        }
+     dataSeries.dataPoints = dataPoints;
+     data.push(dataSeries);   
+
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer-1",
+	{
+		title:{
+			text: "Basic Candle Stick Chart"
+		},
+		zoomEnabled: true,
+		axisY: {
+			includeZero:false,
+			title: "Prices",
+			prefix: "$ "
+		},
+		axisX: {
+			interval:2,
+			intervalType: "month",
+			valueFormatString: "MMM-YY",
+			labelAngle: -45
+		},
+		data: [
+		{
+			type: "candlestick",
+			dataPoints: [{% for item in chor %}
+                {{item}},
+              {% endfor %}
+              {x: new Date(2019,3,4),y:[1,23,4,4]}]
+		}
+		]
+	});
+	chart.render();
+
+
+
+var chart = new CanvasJS.Chart("chartContainer0",
+    {
+      zoomEnabled: true,
+      animationEnabled: true,
+      title:{
+        text: "Initial Zoom to -200 to 300, Pan to -300 to 400" 
+      },
+      axisX:{
+        minimum: -300,
+        maximum: 400,
+        viewportMinimum: 1,
+        viewportMaximum: 300      
+      },
+      data: data  // random generator below      
+   });
+
+    chart.render();
+  
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light2", // "light2", "dark1", "dark2"
+	animationEnabled: true, // change to true/false		
+	title:{
+		text: "Basic Column Chart"
+	},
+	data: [
+	{
+		// Change type to "column","bar", "area", "spline", "pie",etc.
+		type: "pie",
+		dataPoints: [
+			{ label: "apple",  y: 10  },
+			{ label: "orange", y: 15  },
+			{ label: "banana", y: 25  },
+			{ label: "mango",  y: 30  },
+			{ label: "grape",  y: 28  }
+		]
+	}
+	]
+});
+chart.render();
+
+var chart = new CanvasJS.Chart("chartContainer2", {
+	theme: "light2", // "light2", "dark1", "dark2"
+	animationEnabled: true, // change to true/false		
+	title:{
+		text: "Basic Column Chart"
+	},
+	data: [
+	{
+		// Change type to "column","bar", "area", "spline", "pie",etc.
+		type: "column",
+		dataPoints: [
+			{ label: "apple",  y: 10  },
+			{ label: "orange", y: 15  },
+			{ label: "banana", y: 25  },
+			{ label: "mango",  y: 30  },
+			{ label: "grape",  y: 28  }
+		]
+	}
+	]
+});
+chart.render();
+
+var chart = new CanvasJS.Chart("chartContainer3", {
+	theme: "light2", // "light2", "dark1", "dark2"
+	animationEnabled: true, // change to true/false		
+	title:{
+		text: "Basic Column Chart"
+	},
+	data: [
+	{
+		// Change type to "column","bar", "area", "spline", "pie",etc.
+		type: "bar",
+		dataPoints: [
+			{ label: "apple",  y: 10  },
+			{ label: "orange", y: 15  },
+			{ label: "banana", y: 25  },
+			{ label: "mango",  y: 30  },
+			{ label: "grape",  y: 28  }
+		]
+	}
+	]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="chartContainer-1" style="height: 370px; width: 100%;"></div>
+	  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+    </div>
+   </div>
+  <div class="row">
+    <div class="col">
+      <div id="chartContainer0" style="height: 370px; width: 100%;"></div>
+	  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+    </div>
+   </div>
+  <div class="row">
+    <div class="col">
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+	</div>
+	<div class="col-6">
+		<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+	</div>
+	<div class="col">
+		<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+	</div>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}
+
+{% block sidebar %}
+<hi>file uploader</h1>
+	<form id="upload-form" action="{{url_for("uploade_file")}}" method="POST" enctype="multipart/form-data">
+	<input id="upload" type="file" name="myfile" accept=".csv" multiple  >
+    <input type="submit" value="submit">
+	</form>
+{% endblock %}

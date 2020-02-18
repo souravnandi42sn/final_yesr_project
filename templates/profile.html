@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{% endblock %}
+
+
+{% block sidebar %}
+<hi>file uploader</h1>
+	<form id="upload-form" action="{{url_for("upload")}}" method="POST" enctype="multipart/form-data"><!--yeh "enctype" mein humne multipart/form-data isslia lia likha h taki the data that we are getting through the form should not be encoded,this is generally used for forms that have a file upload control-->
+		<input type="file" name="file" accept="image/*" multiple><!--this "multiple" attribute allows the user to enter more than one value under the input<element>-->
+		<input type="submit" value="submit">
+	</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>The Flights Are</h1>
+<table class="table table-stripped">
+        <tr>
+            <th>Flight id</th>
+        <th>Flight from</th>
+        <th>Flight to</th>
+        <th>Flight cost</th>
+        <th>Time(HOURS) </th>
+            <th>BOOK</th>
+    </tr>
+    {% for flight in qtns %}
+
+    <tr>
+        <td>{{flight.flight_id}}</td>
+			<td>{{flight.fromcity}}</td><!--abb bas yeh wala access of data ko thik karna h..???-->
+			<td>{{flight.tocity}}</td>
+			<td>{{flight.cost}}</td>
+			<td>{{flight.timef}}</td>
+        <td><button type="submit" class="btn btn-primary" href="/book" >BOOK</button></td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

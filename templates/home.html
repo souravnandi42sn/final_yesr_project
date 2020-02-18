@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% block content %}
+<style>
+h1 {
+  color: #444;
+  font: 800 350%/1.4 'Open Sans', sans-serif;
+  text-transform: uppercase;
+}
+.heading {
+  font-family: Impact, fantasy;
+  font-weight: 300;
+  display: grid;
+  grid: auto / auto auto;
+}
+/*yahan se har ek news ke liye style h*/
+
+.drop-shadow {
+    position:relative;
+    float:left;
+    width:40%;
+    padding:1em;
+    margin:2em 10px 4em;
+    background:#fff;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+      box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.drop-shadow:before,
+.drop-shadow:after {
+    content:"";
+    position:absolute;
+    z-index:-2;
+}
+
+.drop-shadow p {
+    font-size:16px;
+    font-weight:bold;
+}
+
+/* Lifted corners */
+
+.lifted {
+    -moz-border-radius:4px;
+   border-radius:4px;
+}
+
+.lifted:before,
+.lifted:after {
+    bottom:15px;
+    left:10px;
+    width:50%;
+    height:20%;
+    max-width:300px;
+    max-height:100px;
+    -webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+       -moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+      box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+    -webkit-transform:rotate(-3deg);
+       -moz-transform:rotate(-3deg);
+  -ms-transform:rotate(-3deg);
+   -o-transform:rotate(-3deg);
+      transform:rotate(-3deg);
+}
+
+.lifted:after {
+    right:10px;
+    left:auto;
+    -webkit-transform:rotate(3deg);
+       -moz-transform:rotate(3deg);
+  -ms-transform:rotate(3deg);
+   -o-transform:rotate(3deg);
+      transform:rotate(3deg);
+}
+
+</style>
+<p id="big">   </p>
+<div class="container" id="p">
+	<h1>NEWS</h1>
+  {% for news_item in news_items %}  
+  	<div class="drop-shadow lifted">
+	<h2 class="heading">{{news_item.title}}</h2>
+    
+    <h3>description {{news_item.description}}</h3>
+    <hr>
+    <small><a href="{{news_item.link}}">{{news_item.title}}</a></small>
+    </div>
+        {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<style>
+
+
+.pimg1, .pimg2, .pimg3{
+  position:relative;
+  opacity:0.70;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+
+  /*
+    fixed = parallax
+    scroll = normal
+  */
+  background-attachment:fixed;
+}
+.pimg1{
+  background-image:url('https://images.unsplash.com/photo-1498049860654-af1a5c566876?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
+  min-height:400px;
+}
+.pimg2{
+  background-image:url('https://images.unsplash.com/photo-1527219525722-f9767a7f2884?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80');
+  min-height:400px;
+}
+
+.pimg3{
+  background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80');
+  min-height:400px;
+}
+.section{
+  text-align:center;
+  padding:50px 80px;
+}
+
+.section-light{
+  background-color:#f4f4f4;
+  color:#666;
+}
+
+.section-dark{
+  background-color:#282e34;
+  color:#ddd;
+}
+
+.ptext{
+  position:absolute;
+  top:50%;
+  width:100%;
+  text-align:center;
+  color:#000;
+  font-size:27px;
+  letter-spacing:8px;
+  text-transform:uppercase;
+}
+
+.ptext .border{
+  background-color:#111;
+  color:#fff;
+  padding:20px;
+}
+
+.ptext .border.trans{
+  background-color:transparent;
+}
+
+@media(max-width:568px){
+  .pimg1, .pimg2, .pimg3{
+    background-attachment:scroll;
+  }
+}
+</style>
+
+<div class="pimg1">
+    <div class="ptext">
+      <span class="border">
+        ABOUT FinO
+      </span>
+    </div>
+</div>
+
+<section class="section section-light">
+    <h2>Section One</h2>
+    <p>
+      Business needs are gaps between the current state of a business and its goals. Needs are the basic drivers of change in an organization that are identified as requirements and implemented by hiring people, implementing projects, transforming operations and purchasing goods. The following are common types of business need.
+    </p>
+  </section>
+
+<div class="pimg2">
+    <div class="ptext">
+      <span class="border trans">
+        Image Two Text
+      </span>
+    </div>
+  </div>
+ <section class="section section-dark">
+    <h2>Section Two</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos! Unde eveniet placeat quisquam blanditiis voluptatem doloremque fugiat dolor repellendus ratione in.
+    </p>
+  </section>
+
+  <div class="pimg3">
+    <div class="ptext">
+      <span class="border trans">
+        Image Three Text
+      </span>
+    </div>
+  </div>
+
+  <section class="section section-light">
+    <h2>Section Three</h2>
+    <p>
+      Throughout most of human history, data visualization was limited because data was limited. Then, thanks to various sciences, scads of information -- about demographics, economics, geography and weather patterns -- emerged. And people needed a way to more easily analyze all this information. By the end of the 18th century, most charts used today -- histograms, pie charts, bar and line graphs -- were already in use, introduced to the world in William Playfair's breakthrough 1786 publication, "Commercial and Political Atlas."
+
+      Playfair decided to use his draftsman’s skills to illustrate economic data. At the time, such information was commonly represented in tables, but Playfair transformed the data into infographics. In one famous line graph, he charted the price of wheat against the cost of labor, countering the popular opinion that wages were driving up grain costs and demonstrating that wages were, in fact, rising much more slowly than the product's cost.
+
+      Read more at https://visme.co/blog/types-of-graphs/#kE623f3auVfBLeDG.99
+      From their humble beginnings, charts and graphs have helped audiences make educated decisions based on data, as well as identify previously unknown trends. Over the years, statisticians from all walks of life developed and designed additional tools for visually plotting data until modern technology allowed an explosion of new data visualizations that illustrate quantitative values in ways never before imagined.
+
+       To help our readers choose the best graph design to illustrate any data set, we’ve compiled a list of 44 types of graphs and the industries that they can serve. Of course, our list is far from all inclusive
+    </p>
+  </section>
+  <div class="pimg1">
+    <div class="ptext">
+      <span class="border">
+        Traversy Media
+      </span>
+    </div>
+  </div>
+
+   <section class="section section-dark">
+    <h2>contact US</h2>
+    <p>
+      souravnandi42@gmail.com
+    </p>
+  </section>
+
+
+{% endblock %}

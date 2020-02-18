@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+<p id="big">   </p>
+<div class="container" id="p">
+	<h1>QUESTIONS</h1>
+  {% for question in questions %}  
+	<h2>{{question.title}}</h2>
+    <small>Writte by {{question.name}} on {{question.create_date}}</small>
+    <hr>
+    <div>
+      {{question.body}}
+    <div>
+      {% endfor %}
+</div>
+ {% endblock %}

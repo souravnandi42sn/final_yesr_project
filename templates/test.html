@@ -1,0 +1,42 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="ct-chart ct-perfect-fourth"></div>
+	<script>
+    var getData=$.get('/data'); //ajax call to get the data for 
+    getData.done(function(results){
+
+    var chart = new CanvasJS.Chart("chartContainer-1", {
+	theme: "light2", // "light2", "dark1", "dark2"
+	animationEnabled: true, // change to true/false		
+	title:{
+		text: "Basic Column Chart"
+	},
+	data: [
+	{
+		// Change type to "column","bar", "area", "spline", "pie",etc.
+		type: "bar",
+		dataPoints: [results.y]
+	}
+	]
+});
+console.log(results.y)
+};
+
+chart.render();
+});
+
+	</script>
+	<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="chartContainer-1" style="height: 370px; width: 100%;"></div>
+	  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+    </div>
+   </div>
+</div>
+</body>
+</html>

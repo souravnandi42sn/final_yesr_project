@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+<p id="big">   </p>
+<div class="container" id="p">
+	<h1>Add questions</h1>  
+	{% from 'include/_formhelpers.html' import render_field %}         
+ <form method="POST" action="">
+ 	<div class="form-group">
+  	{{render_field(form.title,class_="form.control")}}
+    </div>
+    <div class="form-group">
+  	{{render_field(form.body,class_="form.control",id="editor")}}
+    </div>
+    <div class="form-group">
+  <button type="submit" class="btn btn-primary" >Submit</button>
+   </div>
+</form>
+</div>
+ {% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<h1>"<"+Compare Trust+">" </h1>
+  <table id="leftbox" class="container">
+         <thead>
+    <tr>
+        <th class="blue">AMAZON reveiws</th>
+    </tr>
+    </thead>
+    <tbody>
+      {% for a in amazons%}
+    <tr>
+      <td>{{a}}</td>
+    </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+    <table id="righttab" class="container">
+      <thead>
+    <tr>
+        <th class="blue">status</th>
+    </tr>
+    <thead>
+    <tbody>
+      {% for p in amazon_predicts%}
+    <tr>
+      <td>{{p}}</td>
+    </tr>
+      {% endfor %}
+      <tbody>
+  </table>
+
+
+  <table id="leftbox2" class="container">
+      <thead>
+    <tr>
+        <th class="blue">FLIPCART reviews</th>
+    </tr>
+    </thead>
+    <tbody>
+      {% for a in flipcarts%}
+    <tr>
+      <td>{{a}}</td>
+    </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+    <table id="righttab2" class="container">
+      <thead>
+    <tr>
+        <th class="blue">status</th>
+    </tr>
+      </thead>
+      <tbody>
+      {% for p in flipcart_predicts%}
+    <tr>
+      <td>{{p}}</td>
+    </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+
+
+<div class="p1">
+    <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <circle class="circle-chart__background" stroke="#efefef" stroke-width="2" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+      <circle class="circle-chart__circle" stroke="#00acc1" stroke-width="2" stroke-dasharray={{amazon_rating_averages}} stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+      <g class="circle-chart__info">
+        <text  class="circle-chart__percent" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8">{{per}}</text>
+        <h2>Amazon</h2>
+      </g>
+    </svg>
+</div>
+<div class="p2">
+    <svg class="circle-chart" viewbox="0 0 33.83098862 33.83098862" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <circle class="circle-chart__background" stroke="#efefef" stroke-width="2" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+      <circle class="circle-chart__circle" stroke="#00acc1" stroke-width="2" stroke-dasharray={{fl_rate}} stroke-linecap="round" fill="none" cx="16.91549431" cy="16.91549431" r="15.91549431" />
+      <g class="circle-chart__info">
+          <text  class="circle-chart__percent" x="16.91549431" y="15.5" alignment-baseline="central" text-anchor="middle" font-size="8" >{{fl_per}}</text>
+          <h2>Flipcart</h2>
+      </g>
+    </svg>
+</div>
+
+<!--last product details-->
+
+
+<table class="container" id="details">
+    <thead>
+    <tr>
+        <th class="yellow">Name</th>
+        <th class="yellow">Storage details</th>
+        <th class="yellow">Screen size</th>
+        <th class="yellow">Batery details</th>
+        <th class="yellow">processor</th>
+        <th class="yellow">Warranty</th>
+        <th class="yellow">Price in Rupees</th>
+        <th class="yellow">Original price</th>
+        <th class="yellow">Warranty</th>
+    </tr>
+    </thead>
+    {% for i in flipcart_most_buyed_prduct_details %}
+    <tbody>
+    <tr>
+        {% for j,v in i.items() %}
+
+      <td>{{v}}</td>
+
+      {% endfor %}
+    </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+
+{% endblock %}

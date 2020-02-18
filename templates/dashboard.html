@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<style>
+p.big {
+  line-height: 1.8;
+}
+
+#p{
+  line-height: 1;
+}
+</style>
+<p id="big">   </p>
+<div class="container" id="p">
+	<h1>Dashboard<small>  wellcome {{session.name}}</small></h1>  
+	<a class="btn btn-success" href="/add_article">Add Questions</a>
+	<hr>
+	<!--abb yahan se coding hoga for retriving the questions that are given by different users-->
+	<table class="table table-stripped">
+		<tr>
+			<th>Name</th>
+			<th>Title</th>
+			<th>Customer</th>
+			<th>Date</th>
+			<th></th><!--this header space is for edit button-->
+			<th></th><!--for delete button-->
+		</tr>
+		<!--now we will be looping through all the questions-->
+		{% for question in questions %}<!--yeh wahi wala "questions" variable h jo jisse humne pass kia tha as a rgument in calling the render_template() in Dashboard-->
+		<tr>
+			<td>{{question.name}}</td><!--abb bas yeh wala access of data ko thik karna h..???-->
+			<td>{{question.title}}</td>
+			<td>{{question.authorid}}</td>
+			<td>{{question.create_date}}</td>
+			<td><a href="edit_question/{{question.id}}" class="btn btn-default pull-right">EDIT</a></td>
+			<td>
+				<!--hum yahan to delete article/question ekk rout("delete_question") banaenge jisse ekk "id"(question ka id jisse humein delete karan h) bhi pass karenge,aur yeh sab delete on submit action mein hoga under the "delete_question" route-->
+				<form action="{{url_for('delete_question',id=question.id)}}" method="post">
+					<input type="submit" value="Delete" class="btn btn-danger">
+				</form>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+ {% endblock %}
+
+
+{% block sidebar %}
+<div class="row">
+  <div class="col">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="/dashboard" role="tab" aria-controls="home">DashBoard</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="/dashi" role="tab" aria-controls="settings">compare</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
